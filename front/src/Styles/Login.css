@@ -1,0 +1,174 @@
+/* Container for the entire login page */
+.login-container {
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #f5f5f5;
+    padding: 20px;
+  }
+  
+  /* Logo in the upper left corner */
+  .logo-container {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    z-index: 10;
+  }
+  
+  .logo {
+    width: 150px; /* Increase size as needed */
+    height: auto;
+  }
+  
+  /* Main login box */
+  .login-box {
+    display: flex;
+    width: 80%;
+    max-width: 1000px;
+    height: 600px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    overflow: hidden;
+    background-color: white;
+  }
+  
+  /* Form container */
+  .login-form {
+    flex: 1;
+    padding: 40px 30px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  
+  h2 {
+    font-size: 2rem;
+    margin-bottom: 10px;
+    color: #333;
+  }
+  
+  .subtext {
+    font-size: 1rem;
+    color: #888;
+    margin-bottom: 20px;
+  }
+  
+  /* Input group styling */
+  .input-group {
+    margin-bottom: 20px;
+  }
+  
+  .input-group label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+    color: #555;
+  }
+  
+  .input-group input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    outline: none;
+    transition: border-color 0.3s;
+  }
+  
+  .input-group input:focus {
+    border-color: #6c63ff;
+  }
+  
+  /* Checkbox and terms */
+  .checkbox-group {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+  }
+  
+  .checkbox-group input[type="checkbox"] {
+    margin-right: 10px;
+  }
+  
+  .checkbox-group label {
+    color: #555;
+  }
+  
+  /* Login button */
+  .login-btn {
+    width: 100%;
+    padding: 10px;
+    background-color: #6c63ff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background-color 0.3s;
+    margin-top: 10px;
+  }
+  
+  .login-btn:hover {
+    background-color: #5548c8;
+  }
+  
+  /* Divider for social login */
+  .or-divider {
+    display: flex;
+    align-items: center;
+    margin: 20px 0;
+    font-size: 0.9rem;
+    color: #888;
+  }
+  
+  .or-divider span {
+    flex: 1;
+    text-align: center;
+    border-top: 1px solid #ddd;
+    margin: 0 10px;
+  }
+  
+  /* Social login buttons */
+  .social-login {
+    display: flex;
+    gap: 10px;
+  }
+  
+  .social-login button {
+    flex: 1;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    background-color: white;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    cursor: pointer;
+    transition: box-shadow 0.3s;
+  }
+  
+  .social-login img {
+    width: 20px;
+    height: 20px;
+  }
+  
+  .social-login button:hover {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Sign up text */
+  .signin-text {
+    margin-top: 20px;
+    color: #555;
+  }
+  
+  /* Right-side background image */
+  .login-image {
+    flex: 1;
+    background-size: cover;
+    background-position: center;
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+  }
+  

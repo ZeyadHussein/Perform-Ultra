@@ -1,0 +1,113 @@
+/* Main Page Layout */
+.departments-page {
+  display: flex;
+  min-height: 100vh;
+  background: #f4f6f9;
+}
+
+/* Container for Departments */
+.departments-container {
+  flex: 1;
+  padding: 10px; /* Reduced padding */
+  max-width: 900px;
+  margin: 0 auto; /* Removed extra vertical margin */
+}
+
+/* Heading */
+h1 {
+  text-align: center;
+  font-size: 28px;
+  margin: 10px 0; /* Reduced space above title */
+  color: #333;
+}
+
+/* Add Department Section */
+.add-department {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-bottom: 15px;
+}
+
+.add-department input {
+  width: 300px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 16px;
+}
+
+.add-department button {
+  background: #007bff;
+  color: white;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.add-department button:hover {
+  background: #0056b3;
+}
+
+/* Table Styling */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  background: white;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+th, td {
+  padding: 12px;
+  text-align: center;
+  border-bottom: 1px solid #ddd;
+}
+
+th {
+  background: #007bff;
+  color: white;
+}
+
+/* Icons Styling */
+.icon-cell {
+  font-size: 24px;
+  color: #007bff;
+}
+
+/* Action Buttons */
+td button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 5px 10px;
+  margin: 0 5px;
+  font-size: 14px;
+  transition: 0.3s;
+}
+
+td button:first-child {
+  color: #28a745;
+}
+
+td button:first-child:hover {
+  color: #1e7e34;
+}
+
+td button:last-child {
+  color: #dc3545;
+}
+
+td button:last-child:hover {
+  color: #c82333;
+}
+
+/* Editing Input Field */
+input[type="text"] {
+  width: 80%;
+  padding: 5px;
+  font-size: 14px;
+}

@@ -1,0 +1,56 @@
+.performance-container {
+    display: flex;
+    min-height: 100vh;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  }
+  
+  .performance-content {
+    flex: 1;
+    padding: 20px;
+    background-color: #f5f5f5;
+  }
+  
+  .divider {
+    border: none;
+    border-top: 1px solid #ddd;
+    margin: 20px 0;
+  }
+  
+  .performance-section h2 {
+    color: #2c3e50;
+    margin-bottom: 5px;
+  }
+  
+  .performance-section h3 {
+    color: #7f8c8d;
+    font-size: 1.1rem;
+    margin-bottom: 20px;
+  }
+  
+  .performance-cards {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+  }
+  
+  .performance-card {
+    background: white;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    width: 100%;
+  }
+  
+  .performance-card h4 {
+    color: #2c3e50;
+    margin-bottom: 10px;
+  }
+  
+  .performance-card p {
+    color: #7f8c8d;
+    margin: 5px 0;
+  }
+  
+  .performance-card p strong {
+    color: #2c3e50;
+  }

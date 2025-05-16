@@ -1,0 +1,125 @@
+/* General Container */
+.signup-container {
+    max-width: 500px;
+    margin: 20px auto; /* Added top margin for spacing */
+    padding: 20px;
+    background: #f8f9fa;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    color: #4285f4;
+  }
+  
+  /* Social Login Buttons - Moved to Bottom */
+  .social-login {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 15px; /* Adjusted margin to move it below form */
+  }
+  
+  .google-btn,
+  .apple-btn {
+    flex: 1;
+    margin: 5px;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    font-size: 14px;
+    cursor: pointer;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px; /* Add space between icon and text */
+  }
+  
+  .google-btn img,
+  .apple-btn img {
+    width: 20px; /* Adjust size of icons */
+    height: auto;
+  }
+  
+  .logo {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    width: 200px; /* Adjust size as needed */
+    height: auto;
+  }
+  
+  .google-btn {
+    background: #ffffff;
+    color: #4285f4;
+  }
+  
+  .apple-btn {
+    background: #ffffff;
+    color: #4285f4;
+  }
+  
+  /* Form Styling */
+  h2 {
+    margin-bottom: 10px;
+    color: #4285f4;
+  }
+  
+  form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+  }
+  
+  input, select {
+    width: 80% !important; /* Ensures the same width for all inputs and select */
+    height: 44px;
+    padding: 12px;
+    margin: 8px 0;
+    border: 1px solid #4285f4;
+    border-radius: 5px;
+    background: #ffffff;
+    color: #4285f4;
+    font-size: 16px;
+    appearance: none; /* Removes default dropdown styles */
+    text-align: left;
+    box-sizing: border-box; /* Ensures padding does not affect width */
+  }
+  
+  input::placeholder {
+    color: #4285f4;
+  }
+  
+  .signup-btn {
+    background: linear-gradient(90deg, #4285f4, #357ae8);
+    color: #ffffff;
+    padding: 12px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: bold;
+    margin-top: 10px;
+    width: 80%;
+  }
+  
+  .signup-btn:hover {
+    background: linear-gradient(90deg, #357ae8, #2c6bd6);
+  }
+  
+  /* Sign In Redirect */
+  p {
+    margin-top: 10px;
+    font-size: 14px;
+    color: #4285f4;
+  }
+  
+  p a {
+    color: #4285f4;
+    text-decoration: none;
+    font-weight: bold;
+  }
+  
+  p a:hover {
+    text-decoration: underline;
+  }
+  

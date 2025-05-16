@@ -1,0 +1,522 @@
+.feedback-page {
+  display: flex;
+  min-height: 100vh;
+  background-color: #f8f9fa;
+  position: relative;
+  overflow-x: hidden;
+  color: #333;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  line-height: 1.6;
+}
+
+/* Dark Mode - Professional Theme */
+.dark-mode .feedback-page {
+  background-color: #121212;
+  color: #e0e0e0;
+}
+
+/* Sidebar Wrapper - Enhanced */
+.sidebar-wrapper {
+  width: 280px;
+  position: fixed;
+  left: 0;
+  top: 0;
+  height: 100vh;
+  z-index: 100;
+  background-color: #ffffff;
+  box-shadow: 2px 0 10px rgba(0, 0, 0, 0.08);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  border-right: 1px solid rgba(0, 0, 0, 0.05);
+  display: flex;
+  flex-direction: column;
+}
+
+.dark-mode .sidebar-wrapper {
+  background-color: #1e1e1e;
+  box-shadow: 2px 0 15px rgba(0, 0, 0, 0.3);
+  border-right: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+/* Main Content Container - Enhanced */
+.content-container {
+  margin-left: 280px;
+  width: calc(100% - 280px);
+  min-height: 100vh;
+  position: relative;
+  z-index: 1;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  padding: 2.5rem;
+  box-sizing: border-box;
+  background-color: #ffffff;
+  display: flex;
+  flex-direction: column;
+}
+
+.dark-mode .content-container {
+  background-color: #121212;
+  color: #e0e0e0;
+}
+
+/* Feedback Content Wrapper - Updated */
+.feedback-content-wrapper {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+/* Feedback Section - Professional Layout */
+.feedback-section {
+  max-width: 1200px;
+  width: 100%;
+  margin: 0 auto;
+  flex: 1;
+}
+
+/* Feedback Container - Improved Spacing */
+.feedback-container {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  width: 100%;
+}
+
+/* Feedback Card - Enhanced Design */
+.feedback-card {
+  background-color: #fff;
+  padding: 1.75rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  width: 100%;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  border: 1px solid rgba(0, 0, 0, 0.05);
+  position: relative;
+  overflow: hidden;
+}
+
+.dark-mode .feedback-card {
+  background-color: #252525;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.feedback-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1);
+}
+
+.dark-mode .feedback-card:hover {
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
+  border-color: rgba(124, 77, 255, 0.3);
+}
+
+/* Add subtle accent to cards in dark mode */
+.dark-mode .feedback-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 3px;
+  height: 100%;
+  background: linear-gradient(to bottom, #7c4dff, #536dfe);
+}
+
+/* Feedback Title - Modern Typography */
+.feedback-title {
+  font-size: 1.75rem;
+  font-weight: 600;
+  color: #2d3748;
+  margin-bottom: 2rem;
+  letter-spacing: -0.5px;
+  position: relative;
+  display: inline-block;
+}
+
+.dark-mode .feedback-title {
+  color: black;
+}
+
+.feedback-title::after {
+  content: '';
+  position: absolute;
+  bottom: -8px;
+  left: 0;
+  width: 50px;
+  height: 3px;
+  background-color: #c53030;
+  border-radius: 3px;
+}
+
+.dark-mode .feedback-title::after {
+  background: linear-gradient(to right, #7c4dff, #536dfe);
+}
+
+/* Feedback Header - Enhanced */
+.feedback-header {
+  margin-bottom: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+/* Feedback Role - Professional Badge */
+.feedback-role {
+  font-weight: 600;
+  color: #c53030;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  padding: 0.25rem 0.75rem;
+  background-color: rgba(197, 48, 48, 0.1);
+  border-radius: 20px;
+  display: inline-flex;
+  align-items: center;
+}
+
+.dark-mode .feedback-role {
+  color: #ff6b6b;
+  background-color: rgba(255, 107, 107, 0.15);
+}
+
+.feedback-role::before {
+  content: '•';
+  margin-right: 6px;
+  font-size: 16px;
+}
+
+/* Feedback Text - Readability Focus */
+.feedback-text {
+  font-size: 1rem;
+  color: #4a5568;
+  line-height: 1.7;
+  margin: 0;
+  transition: color 0.3s ease;
+}
+
+.dark-mode .feedback-text {
+  color: #d1d5db;
+}
+
+/* Feedback Divider - Subtle Style */
+.feedback-divider {
+  border: none;
+  border-top: 1px solid rgba(0, 0, 0, 0.08);
+  margin: 1.25rem 0 0;
+}
+
+.dark-mode .feedback-divider {
+  border-top-color: rgba(255, 255, 255, 0.08);
+}
+
+/* No Feedback Message - Professional Empty State */
+.no-feedback {
+  font-size: 1rem;
+  color: #718096;
+  text-align: center;
+  margin-top: 3rem;
+  padding: 2rem;
+  background-color: rgba(0, 0, 0, 0.02);
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.dark-mode .no-feedback {
+  color: #9ca3af;
+  background-color: rgba(255, 255, 255, 0.03);
+}
+
+.no-feedback::before {
+  content: '💬';
+  font-size: 2rem;
+  margin-bottom: 1rem;
+  opacity: 0.7;
+}
+
+/* ==================== */
+/* FOOTER - DARK BY DEFAULT, CHANGES IN DARK MODE */
+/* ==================== */
+
+/* Default dark footer */
+.page-footer {
+  background-color: #1a1a1a; /* Dark gray */
+  color: #f1f1f1;
+  padding: 3.5rem 0;
+  margin-top: auto;
+  width: calc(100% + 5rem);
+  margin-left: -2.5rem;
+  margin-right: -2.5rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+/* Footer in dark mode - switches to blue-gray */
+.dark-mode .page-footer {
+  background-color: #2d3748; /* Dark blue-gray */
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.footerContainer {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.socialIcons {
+  display: flex;
+  justify-content: center;
+  gap: 1.75rem;
+  margin-bottom: 2rem;
+}
+
+.socialIcons button {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(255, 255, 255, 0.9); /* Semi-transparent white */
+  color: #333; /* Dark text for light background */
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  font-size: 1.25rem; /* Adjusted icon size */
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+}
+
+.socialIcons button:hover {
+  background-color: #555; /* Dark gray on hover */
+  color: white;
+  transform: translateY(-3px) scale(1.05);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* Dark mode styles */
+.dark-mode .socialIcons button {
+  background-color: rgba(30, 30, 30, 0.9); /* Dark background */
+  color: #e0e0e0; /* Light icon color */
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+}
+
+.dark-mode .socialIcons button:hover {
+  background-color: #7c4dff; /* Purple accent in dark mode */
+  color: white;
+}
+
+/* Icon sizing for different icon types */
+.socialIcons button i {
+  font-size: 1.25rem;
+}
+
+.socialIcons button svg {
+  width: 1.25rem;
+  height: 1.25rem;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .socialIcons {
+    gap: 1.25rem;
+  }
+  
+  .socialIcons button {
+    width: 44px;
+    height: 44px;
+    font-size: 1.1rem;
+  }
+  
+  .socialIcons button i,
+  .socialIcons button svg {
+    font-size: 1.1rem;
+    width: 1.1rem;
+    height: 1.1rem;
+  }
+}
+
+.footerNav ul {
+  display: flex;
+  justify-content: center;
+  list-style: none;
+  gap: 2rem;
+  padding: 0;
+  margin-bottom: 2rem;
+  flex-wrap: wrap;
+}
+
+.footerNav a {
+  text-decoration: none;
+  color: #f1f1f1;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  font-size: 0.95rem;
+  letter-spacing: 0.5px;
+  padding: 0.5rem;
+  position: relative;
+}
+
+.footerNav a::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 0;
+  height: 2px;
+  background-color: #e53e3e;
+  transition: width 0.3s ease;
+}
+
+.footerNav a:hover::after {
+  width: 100%;
+}
+
+.dark-mode .footerNav a {
+  color: #e2e8f0;
+}
+
+.dark-mode .footerNav a::after {
+  background-color: #fc8181;
+}
+
+.footerBottom{
+  background-color: #000;
+  text-align: center;
+  width: 100%; /* Ensures it takes the full width of the footer */
+  padding: 10px 0; /* Adjust padding for better spacing */
+}
+.footerBottom p {
+  margin: 0;
+  color: #aaa;
+  font-size: 0.85rem;
+  letter-spacing: 0.5px;
+}
+
+.dark-mode .footerBottom {
+  border-top-color: rgba(255, 255, 255, 0.15);
+}
+
+.dark-mode .footerBottom p {
+  color: #bbb;
+}
+
+/* Theme Toggle Button - Enhanced */
+.theme-toggle {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  z-index: 1000;
+  background: #1a1a1a;
+  color: #f1f1f1;
+  border: none;
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  cursor: pointer;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.25);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.theme-toggle:hover {
+  transform: translateY(-5px) scale(1.1);
+  box-shadow: 0 6px 25px rgba(0, 0, 0, 0.35);
+}
+
+.dark-mode .theme-toggle {
+  background: #2d3748;
+  color: #f7fafc;
+}
+
+.theme-toggle i {
+  font-size: 1.5rem;
+  transition: transform 0.3s ease;
+}
+
+.theme-toggle:hover i {
+  transform: rotate(15deg);
+}
+
+/* Responsive Design - Enhanced Breakpoints */
+@media (max-width: 1024px) {
+  .content-container {
+    padding: 2rem;
+  }
+  
+  .page-footer {
+    width: calc(100% + 4rem);
+    margin-left: -2rem;
+    margin-right: -2rem;
+    padding: 3rem 0;
+  }
+}
+
+@media (max-width: 768px) {
+  .sidebar-wrapper {
+    transform: translateX(-100%);
+    width: 260px;
+  }
+
+  .sidebar-wrapper.open {
+    transform: translateX(0);
+  }
+
+  .content-container {
+    margin-left: 0;
+    width: 100%;
+    padding: 1.75rem;
+  }
+
+  .page-footer {
+    width: calc(100% + 3.5rem);
+    margin-left: -1.75rem;
+    margin-right: -1.75rem;
+    padding: 2.5rem 0;
+  }
+
+  .footerNav ul {
+    gap: 1.25rem;
+  }
+
+  .socialIcons {
+    gap: 1.5rem;
+  }
+
+  .theme-toggle {
+    width: 50px;
+    height: 50px;
+    bottom: 1.75rem;
+    right: 1.75rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .content-container {
+    padding: 1.5rem;
+  }
+  
+  .page-footer {
+    padding: 2rem 0;
+  }
+  
+  .footerNav ul {
+    flex-direction: column;
+    gap: 1rem;
+  }
+  
+  .socialIcons {
+    gap: 1.25rem;
+  }
+  
+  .theme-toggle {
+    width: 48px;
+    height: 48px;
+    bottom: 1.5rem;
+    right: 1.5rem;
+  }
+}
