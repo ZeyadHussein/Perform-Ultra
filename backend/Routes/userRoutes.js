@@ -4,25 +4,31 @@ const pool = require("../db/db");
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 
-const JWT_SECRET = "your_secret_key"; // Use a secure key in production
+const JWT_SECRET = "your_secret_key"; // Replace with a secure key in production
 
-// 🔹 Middleware for authentication
+// ✅ Authentication Middleware
 const authenticate = (req, res, next) => {
-    const token = req.header("Authorization");
-    if (!token) {
+    const authHeader = req.header("Authorization");
+
+    console.log("Auth Header:", authHeader); // Debug
+
+    if (!authHeader || !authHeader.startsWith("Bearer ")) {
         return res.status(401).json({ message: "Access denied. No token provided." });
     }
 
+    const token = authHeader.split(" ")[1];
+
     try {
-        const decoded = jwt.verify(token.replace("Bearer ", ""), JWT_SECRET);
-        req.user = decoded; // Attach user data to request
+        const decoded = jwt.verify(token, JWT_SECRET);
+        req.user = decoded;
         next();
     } catch (err) {
+        console.error("JWT verification failed:", err);
         res.status(401).json({ message: "Invalid token" });
     }
 };
 
-// 🔹 Route to register a new user
+// ✅ Register New User
 router.post("/adduser", async (req, res) => {
     const { Name, Email, Password, Role, City, District, Department_ID } = req.body;
 
@@ -32,7 +38,7 @@ router.post("/adduser", async (req, res) => {
 
     try {
         const hashedPassword = await bcrypt.hash(Password, 10);
-        
+
         pool.query(
             "INSERT INTO user (Name, Email, Password, Role, City, District, Department_ID) VALUES (?, ?, ?, ?, ?, ?, ?)",
             [Name, Email, hashedPassword, Role, City, District, Department_ID],
@@ -49,7 +55,7 @@ router.post("/adduser", async (req, res) => {
     }
 });
 
-// 🔹 Route for user login (Generates Token)
+// ✅ Login and Generate Token
 router.post("/login", (req, res) => {
     const { Email, Password } = req.body;
 
@@ -58,72 +64,49 @@ router.post("/login", (req, res) => {
     }
 
     pool.query("SELECT * FROM user WHERE Email = ?", [Email], async (err, results) => {
-        if (err) {
-            console.error("Database error:", err);
-            return res.status(500).json({ message: "Internal server error" });
-        }
-
-        if (results.length === 0) {
-            console.log("No user found with email:", Email);
-            return res.status(401).json({ message: "Invalid credentials" });
-        }
+        if (err) return res.status(500).json({ message: "Internal server error" });
+        if (results.length === 0) return res.status(401).json({ message: "Invalid credentials" });
 
         const user = results[0];
+        const passwordMatch = await bcrypt.compare(Password, user.Password);
+        if (!passwordMatch) return res.status(401).json({ message: "Invalid credentials" });
 
-        console.log("User found:", user); // Debugging info
-
-        try {
-            const passwordMatch = await bcrypt.compare(Password, user.Password);
-
-            console.log("Password match:", passwordMatch); // Debugging info
-
-            if (!passwordMatch) {
-                return res.status(401).json({ message: "Invalid credentials" });
-            }
-
-            const token = jwt.sign({ id: user.User_ID, role: user.Role }, JWT_SECRET, { expiresIn: "1h" });
-
-            res.status(200).json({ message: "Login successful", token });
-        } catch (error) {
-            console.error("Error comparing passwords:", error);
-            res.status(500).json({ message: "Server error" });
-        }
+        const token = jwt.sign({ id: user.User_ID, role: user.Role }, JWT_SECRET, { expiresIn: "1h" });
+        res.status(200).json({ message: "Login successful", token });
     });
 });
 
-
-// 🔹 Protected Route (Only for authenticated users)
-router.get("/users", authenticate, (req, res) => {
-    pool.query("SELECT * FROM user", (err, results) => {
-        if (err) {
-            console.error("Error fetching users:", err);
-            return res.status(500).json({ message: "Error fetching users" });
-        }
-        res.json(results);
-    });
-});
-// ✅ Route to update a user
-router.put("/update-user", (req, res) => {
-    const { User_ID, Name, Email, Role, City, District, Department_ID } = req.body;
-
-    if (!User_ID || !Name || !Email || !Role) {
-        return res.status(400).json({ message: "Please provide all required fields" });
-    }
-
+// ✅ Get Profile
+router.get("/user/profile", authenticate, (req, res) => {
     pool.query(
-        "UPDATE user SET Name = ?, Email = ?, Role = ?, City = ?, District = ?, Department_ID = ? WHERE User_ID = ?",
-        [Name, Email, Role, City, District, Department_ID, User_ID],
-        (err, result) => {
-            if (err) {
-                console.error("❌ Error updating user:", err);
-                return res.status(500).json({ message: "Error updating user" });
-            }
-            if (result.affectedRows === 0) {
-                return res.status(404).json({ message: "User not found" });
-            }
-            res.json({ message: "✅ User updated successfully" });
+        "SELECT Name, Email, City, District, Department_ID FROM user WHERE User_ID = ?",
+        [req.user.id],
+        (err, results) => {
+            if (err) return res.status(500).json({ message: "Error fetching profile", error: err.message });
+            if (results.length === 0) return res.status(404).json({ message: "User not found" });
+            res.json(results[0]);
         }
     );
+});
+
+// ✅ Update Profile
+router.put("/user/profile", authenticate, (req, res) => {
+    const { Name, Email, City, District, Department_ID } = req.body;
+
+    if (!Name || !Email) {
+        return res.status(400).json({ message: "Name and Email are required" });
+    }
+
+    const updateQuery = `
+        UPDATE user 
+        SET Name = ?, Email = ?, City = ?, District = ?, Department_ID = ?
+        WHERE User_ID = ?
+    `;
+
+    pool.query(updateQuery, [Name, Email, City, District, Department_ID, req.user.id], (err) => {
+        if (err) return res.status(500).json({ message: "Update failed" });
+        res.json({ message: "Profile updated successfully" });
+    });
 });
 
 // ✅ Route to delete a user
@@ -145,6 +128,17 @@ router.delete("/delete-user", (req, res) => {
         res.json({ message: "✅ User deleted successfully" });
     });
 });
+// ✅ Get All Users (for assigning tasks)
+router.get("/users", authenticate, (req, res) => {
+    pool.query("SELECT User_ID, Name, Role FROM user", (err, results) => {
+        if (err) {
+            console.error("❌ Error fetching users:", err);
+            return res.status(500).json({ message: "Error fetching users" });
+        }
+        res.json(results);
+    });
+});
+
 
 
 module.exports = router;

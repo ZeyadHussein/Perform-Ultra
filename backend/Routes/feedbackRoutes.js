@@ -42,12 +42,19 @@ router.get("/feedback", authenticate, (req, res) => {
 
 // ✅ Route to get feedback by user
 router.get("/userfeedback", authenticate, (req, res) => {
-    const userID = req.user.id;
+    const userId = req.user.id;
 
-    pool.query("SELECT * FROM feedback WHERE User_ID = ?", [userID], (err, results) => {
+    const sql = `
+        SELECT f.feedback_ID, f.feedback_text, u.Name, u.Role 
+        FROM feedback f
+        JOIN user u ON f.user_ID = u.User_ID
+        WHERE f.user_ID = ?
+    `;
+
+    pool.query(sql, [userId], (err, results) => {
         if (err) {
-            console.error("❌ Error fetching user feedback:", err);
-            return res.status(500).json({ message: "Database error" });
+            console.error("Error fetching feedback:", err);
+            return res.status(500).json({ message: "Error fetching feedback" });
         }
         res.json(results);
     });
